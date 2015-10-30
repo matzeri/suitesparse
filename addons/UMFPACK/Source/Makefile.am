@@ -275,6 +275,7 @@ libumfpack_la_SOURCES =
 libumfpack_la_LIBADD = \
 	$(II) $(LL) $(GN) $(DI) $(DL) $(ZI) $(ZL) \
 	@BLAS_LIBS@ @SUITESPARSECONFIG_LIBS@ @AMD_LIBS@ @CHOLMOD_LIBS@
+libumfpack_la_LDFLAGS = -version-info 1:0:0 ${NOUNDEFINED}
 
 MAINTAINERCLEANFILES = Makefile.in
 

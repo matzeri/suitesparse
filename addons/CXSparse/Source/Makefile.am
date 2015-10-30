@@ -34,5 +34,6 @@ libcxsparse_la_LIBADD = \
 	libcxsparse_ci.la \
 	libcxsparse_cl.la \
 	@SUITESPARSECONFIG_LIBS@
+libcxsparse_la_LDFLAGS = ${NOUNDEFINED}
 
 MAINTAINERCLEANFILES = Makefile.in

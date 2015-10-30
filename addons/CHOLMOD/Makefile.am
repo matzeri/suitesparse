@@ -8,6 +8,7 @@ DISTCHECK_CONFIGURE_FLAGS = \
 	--with-matrixops \
 	--with-modify \
 	--with-supernodal \
+	--with-gpu \
 	--with-doc
 
 EXTRA_SUBDIRS=
@@ -55,6 +56,13 @@ EXTRA_LIBADD += \
 	$(top_builddir)/Supernodal/libsupernodall.la
 endif
 
+if WITH_CUDA
+EXTRA_SUBDIRS += GPU
+EXTRA_LIBADD += \
+	$(top_builddir)/GPU/libgpu.la \
+	$(top_builddir)/GPU/libgpul.la
+endif
+
 lib_LTLIBRARIES = libcholmod.la
 
 SUBDIRS = Cored Include $(EXTRA_SUBDIRS) Demo Doc
@@ -64,3 +72,4 @@ libcholmod_la_LIBADD = \
 	$(EXTRA_LIBADD) \
 	$(top_builddir)/Cored/libcore.la \
 	$(top_builddir)/Cored/libcorel.la
+libcholmod_la_LDFLAGS = -version-info 1:0:0 ${NOUNDEFINED}

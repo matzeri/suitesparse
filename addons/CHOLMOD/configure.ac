@@ -77,6 +77,7 @@ if test x$with_cuda != xno; then
     test x$CUBLAS_PC = x && PC_LIBS="$PC_LIBS $CUBLAS_LIBS"
     AC_DEFINE([GPU_BLAS], [1], [Built with CUDA BLAS acceleration])
 fi
+AM_CONDITIONAL([WITH_CUDA], [test x$with_cuda = xyes])
 
 #
 # Optional Modules
@@ -215,15 +216,30 @@ else
 fi
 AM_CONDITIONAL([WITH_SUPERNODAL], [test x$with_supernodal = xyes])
 
+AC_MSG_CHECKING([if libtool needs -no-undefined flag to build shared libraries])
+case "`uname`" in
+  CYGWIN*|MINGW*|AIX*)
+    ## Add in the -no-undefined flag to LDFLAGS for libtool.
+    AC_MSG_RESULT([yes])
+    NOUNDEFINED=" -no-undefined"
+    ;;
+  *)
+    ## Don't add in anything.
+    AC_MSG_RESULT([no])
+    ;;
+esac
+
 AC_SUBST([BLAS_PC])
 AC_SUBST([LAPACK_PC])
 AC_SUBST([PC_LIBS])
+AC_SUBST([NOUNDEFINED])
 
 AC_CONFIG_FILES([Check/Makefile
 		 Cholesky/Makefile
 		 Cored/Makefile
 		 Demo/Makefile		 
                  Doc/Makefile
+                 GPU/Makefile
                  Include/Makefile
 		 MatrixOps/Makefile
 		 Modify/Makefile

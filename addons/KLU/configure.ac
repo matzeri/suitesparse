@@ -46,7 +46,6 @@ AX_CHECK_PKG_LIB(
 AX_CHECK_PKG_LIB(
 	[amd],
 	[amd.h],
-	[amd_malloc],,
 	[AC_MSG_ERROR([Could not find amd library])])
 
 AX_CHECK_PKG_LIB(
@@ -70,6 +69,21 @@ if test x$with_cholmod = xyes; then
 		[AC_MSG_ERROR([Could not find cholmod library])])
 fi
 AM_CONDITIONAL([WITH_CHOLMOD], [test x$with_cholmod != xno])
+
+AC_MSG_CHECKING([if libtool needs -no-undefined flag to build shared libraries])
+case "`uname`" in
+  CYGWIN*|MINGW*|AIX*)
+    ## Add in the -no-undefined flag to LDFLAGS for libtool.
+    AC_MSG_RESULT([yes])
+    NOUNDEFINED=" -no-undefined"
+    ;;
+  *)
+    ## Don't add in anything.
+    AC_MSG_RESULT([no])
+    ;;
+esac
+
+AC_SUBST([NOUNDEFINED])
 
 AC_CONFIG_FILES([Demo/Makefile		 
                  Doc/Makefile

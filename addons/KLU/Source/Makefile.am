@@ -25,5 +25,6 @@ lib_LTLIBRARIES = libklu.la
 libklu_la_SOURCES =
 libklu_la_LIBADD = libklud.la libkluz.la libklul.la libkluzl.la \
 	@SUITESPARSECONFIG_LIBS@ @AMD_LIBS@ @COLAMD_LIBS@ @BTF_LIBS@
+libklu_la_LDFLAGS = -version-info 1:0:0 ${NOUNDEFINED}
 
 MAINTAINERCLEANFILES = Makefile.in

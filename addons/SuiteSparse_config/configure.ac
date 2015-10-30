@@ -23,6 +23,21 @@ AC_FUNC_MALLOC
 # Req
 AC_CHECK_LIB([rt], [clock_gettime])
 
+AC_MSG_CHECKING([if libtool needs -no-undefined flag to build shared libraries])
+case "`uname`" in
+  CYGWIN*|MINGW*|AIX*)
+    ## Add in the -no-undefined flag to LDFLAGS for libtool.
+    AC_MSG_RESULT([yes])
+    NOUNDEFINED=" -no-undefined"
+    ;;
+  *)
+    ## Don't add in anything.
+    AC_MSG_RESULT([no])
+    ;;
+esac
+
+AC_SUBST([NOUNDEFINED])
+
 # Optional xerbla mini libraries
 AC_MSG_CHECKING([whether to build the xerbla libraries])
 AC_ARG_WITH([xerbla],

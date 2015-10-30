@@ -9,6 +9,7 @@ include_HEADERS = SuiteSparse_config.h
 
 lib_LTLIBRARIES = libsuitesparseconfig.la
 libsuitesparseconfig_la_SOURCES = $(include_HEADERS) SuiteSparse_config.c
+libsuitesparseconfig_la_LDFLAGS = -version-info 1:0:0 ${NOUNDEFINED}
 
 if WITH_XERBLA
 

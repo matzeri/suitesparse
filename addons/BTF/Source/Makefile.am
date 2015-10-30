@@ -16,5 +16,6 @@ libbtfl_la_CPPFLAGS = $(AM_CPPFLAGS) -DDLONG
 lib_LTLIBRARIES = libbtf.la
 libbtf_la_SOURCES =
 libbtf_la_LIBADD = libbtfl.la libbtfi.la @SUITESPARSECONFIG_LIBS@
+libbtf_la_LDFLAGS = ${NOUNDEFINED}
 
 MAINTAINERCLEANFILES = Makefile.in

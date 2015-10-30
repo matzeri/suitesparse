@@ -120,6 +120,21 @@ AC_SUBST([LAPACK_PC])
 AC_SUBST([PC_LIBS])
 AC_SUBST([TBB_PC])
 
+AC_MSG_CHECKING([if libtool needs -no-undefined flag to build shared libraries])
+case "`uname`" in
+  CYGWIN*|MINGW*|AIX*)
+    ## Add in the -no-undefined flag to LDFLAGS for libtool.
+    AC_MSG_RESULT([yes])
+    NOUNDEFINED=" -no-undefined"
+    ;;
+  *)
+    ## Don't add in anything.
+    AC_MSG_RESULT([no])
+    ;;
+esac
+
+AC_SUBST([NOUNDEFINED])
+
 AC_CONFIG_FILES([Demo/Makefile		 
                  Doc/Makefile
 		 Source/Makefile

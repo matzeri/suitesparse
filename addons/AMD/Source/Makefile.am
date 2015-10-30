@@ -25,6 +25,7 @@ libamdl_la_CPPFLAGS = $(AM_CPPFLAGS) -DDLONG
 lib_LTLIBRARIES = libamd.la
 libamd_la_SOURCES = amd_global.c
 libamd_la_LIBADD = libamdl.la libamdi.la @SUITESPARSECONFIG_LIBS@
+libamd_la_LDFLAGS = -version-info 1:0:0 ${NOUNDEFINED}
 
 if ENABLE_FORTRAN
 lib_LTLIBRARIES += libamdf77.la

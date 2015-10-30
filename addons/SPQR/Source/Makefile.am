@@ -45,5 +45,6 @@ libspqr_la_SOURCES = \
     spqr_tol.cpp
 
 libspqr_la_LIBADD = @TBB_LIBS@ @LAPACK_LIBS@ @CHOLMOD_LIBS@
+libspqr_la_LDFLAGS = -version-info 1:0:0 ${NOUNDEFINED}
 
 MAINTAINERCLEANFILES = Makefile.in
