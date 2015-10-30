@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 
 if [ $# -lt 1 ]; then
     echo $"Usage: $(basename $0) PKG
@@ -10,8 +11,11 @@ fi
 
 
 build_suitesparse_pkg() {
+    echo "pre shift" $@
+    echo $1
     local lib=$1 i
     shift
+    echo "post shift" $@
     # remove old
     if [[ -d SuiteSparse ]];  then
 	chmod -R 755 SuiteSparse
@@ -33,6 +37,13 @@ build_suitesparse_pkg() {
 	cp ${i} SuiteSparse/$(dirname ${i/addons\/})
     done
 
+    # patch specific files
+    for i in $(find patch/${lib} -type f); do
+	pushd SuiteSparse
+	patch -p0 -i ../${i}
+	popd
+    done
+
     pushd SuiteSparse/${lib} > /dev/null
     # apply hook
     [[ -x post-copy-hook.bash ]] && ./post-copy-hook.bash
@@ -46,7 +57,7 @@ build_suitesparse_pkg() {
     # configure, build, test, and package
     autoreconf -vi && \
 	PKG_CONFIG_PATH="${PREFIX}/lib/pkgconfig:$PKG_CONFIG_PATH" \
-	./configure && make distcheck PKG_CONFIG_PATH="${PREFIX}/lib/pkgconfig:$PKG_CONFIG_PATH"
+	./configure $@ && make distcheck PKG_CONFIG_PATH="${PREFIX}/lib/pkgconfig:$PKG_CONFIG_PATH"
 
     # cleanup
     if [[ $? -eq 0 ]]; then
@@ -71,7 +82,7 @@ build_suitesparse_pkg() {
 	mkdir ${lib}_build && \
 	pushd ${lib}_build && \
 	PKG_CONFIG_PATH="${PREFIX}/lib/pkgconfig:$PKG_CONFIG_PATH" \
-	../${src}/configure --prefix=${PREFIX} --disable-static $@ && \
+	../${src}/configure $@ --prefix=${PREFIX} --disable-static && \
 	make install && \
 	popd && \
 	rm -rf ${lib}_build ${src} && \
@@ -106,5 +117,5 @@ if [[ $1 == ALL ]]; then
     build_suitesparse_pkg SPQR --with-partition
     build_suitesparse_pkg UMFPACK
 else
-    build_suitesparse_pkg $1
+    build_suitesparse_pkg $@
 fi
