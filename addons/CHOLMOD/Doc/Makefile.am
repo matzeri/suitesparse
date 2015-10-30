@@ -14,6 +14,7 @@ UserGuide.pdf:
 	$(srcdir)/getmproto $(top_srcdir)/MATLAB/ldlsolve.m > _ldlsolve_m.tex
 	$(srcdir)/getmproto $(top_srcdir)/MATLAB/ldlsplit.m > _ldlsplit_m.tex
 	$(srcdir)/getmproto $(top_srcdir)/MATLAB/ldlupdate.m > _ldlupdate_m.tex
+	$(srcdir)/getmproto $(top_srcdir)/MATLAB/ldlrowmod.m > _ldlrowmod_m.tex
 	$(srcdir)/getmproto $(top_srcdir)/MATLAB/metis.m > _metis_m.tex
 	$(srcdir)/getmproto $(top_srcdir)/MATLAB/mread.m > _mread_m.tex
 	$(srcdir)/getmproto $(top_srcdir)/MATLAB/spsym.m > _spsym_m.tex

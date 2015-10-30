@@ -24,6 +24,10 @@ if WITH_SUPERNODAL
 EXTRA_HEADERS += cholmod_supernodal.h
 endif
 
+if WITH_CUDA
+EXTRA_HEADERS += cholmod_gpu.h cholmod_gpu_kernels.h
+endif
+
 nodist_include_HEADERS = cholmod_config.h
 noinst_HEADERS = \
 	cholmod_complexity.h \
@@ -36,6 +40,7 @@ include_HEADERS = \
 	cholmod_blas.h \
 	cholmod_camd.h \
 	cholmod_core.h \
+	cholmod_function.h \
 	cholmod_io64.h
 
 EXTRA_DIST = README.txt License.txt

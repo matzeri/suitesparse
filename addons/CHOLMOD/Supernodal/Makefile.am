@@ -2,7 +2,6 @@ AM_CPPFLAGS = -I$(top_srcdir)/Include @SUITESPARSECONFIG_CFLAGS@
 
 noinst_LTLIBRARIES = libsupernodal.la libsupernodall.la
 noinst_HEADERS = \
-	t_cholmod_gpu.c \
 	t_cholmod_super_numeric.c \
 	t_cholmod_super_solve.c
 
