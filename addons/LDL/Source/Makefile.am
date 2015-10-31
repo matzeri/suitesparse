@@ -10,6 +10,6 @@ libldll_la_CPPFLAGS = $(AM_CPPFLAGS) -DLDL_LONG
 lib_LTLIBRARIES = libldl.la
 libldl_la_SOURCES =
 libldl_la_LIBADD = libldll.la libldli.la @SUITESPARSECONFIG_LIBS@
-libldl_la_LDFLAGS = -version-info 1:0:0 ${NOUNDEFINED}
+libldl_la_LDFLAGS = -version-info 1:0:0 $(NOUNDEFINED)
 
 MAINTAINERCLEANFILES = Makefile.in

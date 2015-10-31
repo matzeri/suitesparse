@@ -72,4 +72,4 @@ libcholmod_la_LIBADD = \
 	$(EXTRA_LIBADD) \
 	$(top_builddir)/Cored/libcore.la \
 	$(top_builddir)/Cored/libcorel.la
-libcholmod_la_LDFLAGS = -version-info 1:0:0 ${NOUNDEFINED}
+libcholmod_la_LDFLAGS = -version-info 1:0:0 $(NOUNDEFINED)

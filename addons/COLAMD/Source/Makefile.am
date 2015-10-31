@@ -10,6 +10,6 @@ libcolamdi_la_SOURCES = $(libcolamdl_la_SOURCES)
 
 libcolamd_la_SOURCES = colamd_global.c
 libcolamd_la_LIBADD = libcolamdi.la libcolamdl.la @SUITESPARSECONFIG_LIBS@
-libcolamd_la_LDFLAGS = -version-info 1:0:0 ${NOUNDEFINED}
+libcolamd_la_LDFLAGS = -version-info 1:0:0 $(NOUNDEFINED)
 
 MAINTAINERCLEANFILES = Makefile.in

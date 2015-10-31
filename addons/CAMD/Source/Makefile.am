@@ -24,6 +24,6 @@ libcamdl_la_CPPFLAGS = $(AM_CPPFLAGS) -DDLONG
 lib_LTLIBRARIES = libcamd.la
 libcamd_la_SOURCES = camd_global.c
 libcamd_la_LIBADD = libcamdl.la libcamdi.la @SUITESPARSECONFIG_LIBS@
-libcamd_la_LDFLAGS = -version-info 1:0:0 ${NOUNDEFINED}
+libcamd_la_LDFLAGS = -version-info 1:0:0 $(NOUNDEFINED)
 
 MAINTAINERCLEANFILES = Makefile.in
