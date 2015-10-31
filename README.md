@@ -5,14 +5,15 @@ This repository is a suite of scripts to re-package and build the
 SuiteSparse library. You may be more interested in the final tar
 balls. Download the latest tar balls at:
 
-http://dev.gentoo.org/~bicatali/distfiles/
+http://matzeri.altervista.org/works/suitesparse/
+(previously http://dev.gentoo.org/~bicatali/distfiles/ )
 
 The repacking replaces the original well crafted but not portable
 Makefile with more standard autotools packaging and some other minor
 changes. This was originally done mostly to satisfy Linux
 distributions QA, but also adds usability and robustness to the
-original packaging. Gentoo Linux re-distributes all source code with
-this packaging.
+original packaging. Gentoo Linux and Cygwin re-distribute all source 
+code with this packaging.
 
 What is done:
 
@@ -45,10 +46,14 @@ Resources
 ---------
 
 SuiteSparse web site:
-    http://www.cise.ufl.edu/research/sparse/SuiteSparse/
+    http://www.suitesparse.com/
+    http://faculty.cse.tamu.edu/davis/suitesparse.html
 
 Download:
-    http://dev.gentoo.org/~bicatali/distfiles/
+    http://matzeri.altervista.org/works/suitesparse/
+    (previously http://dev.gentoo.org/~bicatali/distfiles/ )
 
 Git repository / bug reports / pull requests:
     https://github.com/sfabbro/suitesparse
+or fork
+    https://github.com/matzeri/suitesparse
