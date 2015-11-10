@@ -85,8 +85,8 @@ fi
 AM_CONDITIONAL([ENABLE_FORTRAN_TEST], [test x$enable_fortran_test = xyes])
 
 AC_MSG_CHECKING([if libtool needs -no-undefined flag to build shared libraries])
-case "`uname`" in
-  CYGWIN*|MINGW*|AIX*)
+case "${host}" in
+  *-*-cygwin* | *-*-mingw*)
     ## Add in the -no-undefined flag to LDFLAGS for libtool.
     AC_MSG_RESULT([yes])
     NOUNDEFINED=" -no-undefined"

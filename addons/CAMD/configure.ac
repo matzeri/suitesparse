@@ -34,8 +34,8 @@ AX_CHECK_PKG_LIB(
 AX_SUITESPARSE_DOC
 
 AC_MSG_CHECKING([if libtool needs -no-undefined flag to build shared libraries])
-case "`uname`" in
-  CYGWIN*|MINGW*|AIX*)
+case "${host}" in
+  *-*-cygwin* | *-*-mingw*)
     ## Add in the -no-undefined flag to LDFLAGS for libtool.
     AC_MSG_RESULT([yes])
     NOUNDEFINED=" -no-undefined"
